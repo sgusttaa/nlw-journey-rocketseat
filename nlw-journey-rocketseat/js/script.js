@@ -1,3 +1,20 @@
+//bibliotecas e codigos de terceiros
+
+const formatador = (data) =>{
+    return{
+        dia: {
+            numerico: dayjs(data).format('DD'),
+            semana: {
+                curto: dayjs(data).format('ddd'),
+                longo: dayjs(data).format('dddd'),
+            }
+        },
+        mes: dayjs(data).format('MMMM'),
+        hora: dayjs(data).format('HH:mm')
+    }
+}
+
+
 //object {}
 const atividade = {
     nome: "Almoço",
@@ -20,8 +37,6 @@ let atividades = [
     },
 ]
 
-atividades = []
-
 //arrow function
 const criarItemDeAtividade = (atividade) => {
     let input = '<input type="checkbox" '
@@ -32,19 +47,38 @@ const criarItemDeAtividade = (atividade) => {
     }
     input += '>'
 
+    const formatar = formatador(atividade.data)
+
     return `
     <div>
     ${input}
     <span>${atividade.nome}</span>
-    <time>${atividade.data}</time>
+    <time>${formatar.dia.semana.longo}, 
+    dia ${formatar.dia.numerico} 
+    de ${formatar.mes} 
+    às ${formatar.hora}h </time>
     </div>
     `
 }
 
-const section = document.querySelector('section');
 
-//estrutura de repetição
-for(let atividade of atividades){
-    section.innerHTML += criarItemDeAtividade(atividade)
+const atualizarListaDeAtividades = () => {
+    const section = document.querySelector('section');
+
+    //verificar se a minha lista esta vazia
+    if(atividades.length == 0){
+        section.innerHTML = `<p>Nenhuma atividade cadastrada.</p>`
+        return
+    }
+
+    //estrutura de repetição
+    for(let atividade of atividades){
+        section.innerHTML += criarItemDeAtividade(atividade)
+    }
 }
 
+atualizarListaDeAtividades();
+
+const salvarAtividade = (event) => {
+    event.preventDefault()
+}

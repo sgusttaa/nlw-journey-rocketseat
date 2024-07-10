@@ -7,11 +7,14 @@ body{
     background-color: #080606;
     color: #fff;
     font-family: Roboto, Arial;
+    height: 100vh;
+}
+
+main{
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
-    height: 100vh;
 }
 
 h1{
