@@ -1,0 +1,27 @@
+formatador(data):
+
+Recebe uma data e retorna um objeto com formatos diferentes da data, incluindo o dia numérico, nome do dia da semana (curto e longo), nome do mês e hora.
+
+criarItemDeAtividade(atividade):
+
+Cria um item HTML representando uma atividade, com um checkbox que indica se a atividade foi finalizada, o nome da atividade e a data formatada. A data é exibida no formato de dia da semana, dia, mês e hora.
+
+atualizarListaDeAtividades():
+
+Atualiza a lista de atividades na página. Se não houver atividades, exibe uma mensagem informando que não há atividades cadastradas. Caso contrário, itera sobre as atividades e adiciona cada uma na seção HTML.
+
+salvarAtividade(event):
+
+Captura os dados do formulário ao enviar um novo evento de atividade, cria uma nova atividade e a adiciona à lista se não houver conflito de data/hora com outra atividade existente. Em seguida, atualiza a lista de atividades.
+
+criarDiasSelecao():
+
+Cria as opções de seleção de dias para um formulário a partir de uma lista de dias específicos e adiciona essas opções ao elemento select correspondente.
+
+criarHorasSelecao():
+
+Cria as opções de seleção de horas disponíveis (de 06:00 até 22:30 em intervalos de 30 minutos) para um formulário e adiciona essas opções ao elemento select correspondente.
+
+concluirAtividade(event):
+
+Alterna o estado de uma atividade entre finalizada e não finalizada quando o checkbox correspondente é marcado ou desmarcado. Encontra a atividade com base na data e inverte o valor da propriedade finalizada.
